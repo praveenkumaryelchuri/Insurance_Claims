@@ -149,7 +149,7 @@ if __name__ == '__main__':
                 st.write(data[['content']])
 
             st.write(get_text_embeddings(data['content']))
-	    preprocessed_data=get_text_embeddings(data['content'])
+		    preprocessed_data=get_text_embeddings(data['content'])
 
 	    #Google Drive file ID (Get it from the shareable link)
             file_id = "1EGzvq_ObaJrUlZGpEs-fnjlkWFiHTybs"  # Replace with your actual file ID
