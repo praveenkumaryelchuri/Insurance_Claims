@@ -1,3 +1,4 @@
+tensorflow
 gdown
 openpyxl
 streamlit
