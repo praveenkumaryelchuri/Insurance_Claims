@@ -16,6 +16,7 @@ import tensorflow_hub as hub
 import tensorflow_text as text
 import gdown
 from tensorflow import keras
+import tensorflow as tf
 
 nltk.download('stopwords')
 nltk.download('punkt_tab')
@@ -53,6 +54,12 @@ def get_text_embeddings(text_series):
     preprocessed_text = bert_preprocess(text_list)  # Preprocess text
     encoder_output = bert_encoder(preprocessed_text)  # Encode with BERT
     return encoder_output["pooled_output"].numpy()  # Convert to NumPy for readability
+
+def create_model_with_input(model):
+    text_input = keras.layers.Input(shape=(), dtype=tf.string, name="text")
+    preprocessed_text = model(text_input)  # Pass the input through the model
+    new_model = keras.Model(inputs=text_input, outputs=preprocessed_text)
+    return new_model
 
 
 
@@ -159,31 +166,44 @@ if __name__ == '__main__':
             url = f"https://drive.google.com/uc?id={file_id}"
             gdown.download(url, output_file, quiet=False)
 		
-	    # Load Keras model
+	        # Load Keras model
             model = keras.models.load_model(output_file, custom_objects={"KerasLayer": hub.KerasLayer})
-	    #st.write("Model bert_model.h5 loaded successfully!")
+            st.write("Model bert_model.h5 loaded successfully!")
 
-	    # Test the model (example for a text classification model)
-            predictions  = model.predict(preprocessed_data)
-            predictions = predictions.flatten() if predictions.ndim > 1 else predictions  # Flatten if needed
 
-	    # Convert predictions to a Pandas Series before adding to DataFrame
-            data['Predicted'] = pd.Series(predictions, index=data.index)
+            #  Wrap the model correctly
+            wrapped_model = create_model_with_input(model)
+
+            #  Example Input (must be a Tensor of dtype=string)
+            text_samples = tf.constant(["This is an example sentence."])  # Must be a tensor
+
+           #  Get Model Prediction
+            preprocessed_output = wrapped_model(text_samples)
+
+            st.write("Preprocessed Output:", preprocessed_output)
+
+
+	    # # Test the model (example for a text classification model)
+        #     predictions  = model.predict(preprocessed_data)
+        #     predictions = predictions.flatten() if predictions.ndim > 1 else predictions  # Flatten if needed
+
+	    # # Convert predictions to a Pandas Series before adding to DataFrame
+        #     data['Predicted'] = pd.Series(predictions, index=data.index)
 	        
-            # Reverse mapping dictionary
-            mapping_dict = {
-            0: 'Bodily Injury',
-            1: 'Other',
-            2: 'Property Damage',
-            3: 'Uninsured or Underinsured'
-            }           
+        #     # Reverse mapping dictionary
+        #     mapping_dict = {
+        #     0: 'Bodily Injury',
+        #     1: 'Other',
+        #     2: 'Property Damage',
+        #     3: 'Uninsured or Underinsured'
+        #     }           
 	        
-          # Apply mapping to 'Predicted' column
-            data['Predicted_Result'] = data['Predicted'].map(mapping_dict).fillna('Unknown')
+        #   # Apply mapping to 'Predicted' column
+        #     data['Predicted_Result'] = data['Predicted'].map(mapping_dict).fillna('Unknown')
 	        
-          #  Display updated DataFrame
-            st.write("Prediction Result:")
-            st.write(data[['content','Predicted_Result']])
+        #   #  Display updated DataFrame
+        #     st.write("Prediction Result:")
+        #     st.write(data[['content','Predicted_Result']])
 
         except Exception as e:
             st.write(e)
