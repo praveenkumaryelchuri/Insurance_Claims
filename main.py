@@ -97,7 +97,7 @@ if __name__ == '__main__':
 	        
             # Create feature matrix X by applying sentence_to_vector to each sentence
             X = np.array([sentence_to_vector(sentence, word2vec_model, embedding_size) for sentence in sentences])
-	    st.write("Feature Matrix")
+	    #st.write("Feature Matrix")
 	    st.write(X)
 
 	        
