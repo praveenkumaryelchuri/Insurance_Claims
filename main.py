@@ -127,7 +127,7 @@ if __name__ == '__main__':
             st.write(data[['content','Predicted_Result']])
 
         except Exception as e:
-            pass
+            st.write('Error :',e)
 
     if st.button("Submit(Predictions using BERT & Neural Network)"):
 
