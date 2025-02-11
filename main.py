@@ -15,6 +15,8 @@ import pickle
 import tensorflow_hub as hub
 import tensorflow_text as text
 
+nltk.download('stopwords')
+
 stop_words=set(stopwords.words('english'))
 
 def return_only_words(text):
