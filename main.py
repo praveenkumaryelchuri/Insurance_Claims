@@ -152,7 +152,7 @@ if __name__ == '__main__':
 	    preprocessed_data=get_text_embeddings(data['content'])
 
 	    #Google Drive file ID (Get it from the shareable link)
-            file_id = "1lB-n_2p-w5xux7zaD5UKAIWkntge4s26"  # Replace with your actual file ID
+            file_id = "1EGzvq_ObaJrUlZGpEs-fnjlkWFiHTybs"  # Replace with your actual file ID
             output_file = "bert_model.h5"
 
             # Download the pickle file from Google Drive
@@ -175,7 +175,7 @@ if __name__ == '__main__':
             1: 'Other',
             2: 'Property Damage',
             3: 'Uninsured or Underinsured'
-}           
+            }           
 	        
           # Apply mapping to 'Predicted' column
             data['Predicted_Result'] = data['Predicted'].map(mapping_dict).fillna('Unknown')
