@@ -14,6 +14,7 @@ from sklearn.model_selection import train_test_split
 import pickle
 import tensorflow_hub as hub
 import tensorflow_text as text
+import gdown
 
 nltk.download('stopwords')
 nltk.download('punkt_tab')
@@ -147,6 +148,18 @@ if __name__ == '__main__':
                 st.write(data[['content']])
 
             st.write(get_text_embeddings(data['content']))
+
+	    #Google Drive file ID (Get it from the shareable link)
+            file_id = "1lB-n_2p-w5xux7zaD5UKAIWkntge4s26"  # Replace with your actual file ID
+            output_file = "bert_model.pkl"
+
+            # Download the pickle file from Google Drive
+            url = f"https://drive.google.com/uc?id={file_id}"
+            gdown.download(url, output_file, quiet=False)
+		
+	    # Load the pickled NLP model
+            with open(output_file, "rb") as file:
+                model = pickle.load(file)
 
         except Exception as e:
             st.write(e)
