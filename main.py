@@ -16,6 +16,7 @@ import tensorflow_hub as hub
 import tensorflow_text as text
 
 nltk.download('stopwords')
+nltk.download('punkt_tab')
 
 stop_words=set(stopwords.words('english'))
 
