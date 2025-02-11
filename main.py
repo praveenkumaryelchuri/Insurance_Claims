@@ -149,10 +149,11 @@ if __name__ == '__main__':
                 st.write(data[['content']])
 
             st.write(get_text_embeddings(data['content']))
+	    preprocessed_data=get_text_embeddings(data['content'])
 
 	    #Google Drive file ID (Get it from the shareable link)
             file_id = "1lB-n_2p-w5xux7zaD5UKAIWkntge4s26"  # Replace with your actual file ID
-            output_file = "bert_model.pkl"
+            output_file = "bert_model.h5"
 
             # Download the pickle file from Google Drive
             url = f"https://drive.google.com/uc?id={file_id}"
@@ -160,6 +161,28 @@ if __name__ == '__main__':
 		
 	    # Load Keras model
             model = keras.models.load_model(output_file)
+
+	    # Test the model (example for a text classification model)
+            predictions  = model.predict(preprocessed_data)
+            predictions = predictions.flatten() if predictions.ndim > 1 else predictions  # Flatten if needed
+
+	    # Convert predictions to a Pandas Series before adding to DataFrame
+            data['Predicted'] = pd.Series(predictions, index=data.index)
+	        
+            # Reverse mapping dictionary
+            mapping_dict = {
+            0: 'Bodily Injury',
+            1: 'Other',
+            2: 'Property Damage',
+            3: 'Uninsured or Underinsured'
+}           
+	        
+          # Apply mapping to 'Predicted' column
+            data['Predicted_Result'] = data['Predicted'].map(mapping_dict).fillna('Unknown')
+	        
+          #  Display updated DataFrame
+            st.write("Prediction Result:")
+            st.write(data[['content','Predicted_Result']])
 
         except Exception as e:
             st.write(e)
