@@ -161,7 +161,7 @@ if __name__ == '__main__':
 		
 	    # Load Keras model
             model = keras.models.load_model(output_file, custom_objects={"KerasLayer": hub.KerasLayer})
-	    st.write("Model bert_model.h5 loaded successfully!")
+	    #st.write("Model bert_model.h5 loaded successfully!")
 
 	    # Test the model (example for a text classification model)
             predictions  = model.predict(preprocessed_data)
