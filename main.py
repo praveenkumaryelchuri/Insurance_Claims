@@ -15,6 +15,7 @@ import pickle
 import tensorflow_hub as hub
 import tensorflow_text as text
 import gdown
+from tensorflow import keras
 
 nltk.download('stopwords')
 nltk.download('punkt_tab')
@@ -157,9 +158,8 @@ if __name__ == '__main__':
             url = f"https://drive.google.com/uc?id={file_id}"
             gdown.download(url, output_file, quiet=False)
 		
-	    # Load the pickled NLP model
-            with open(output_file, "rb") as file:
-                model = pickle.load(file)
+	    # Load Keras model
+            model = keras.models.load_model(output_file)
 
         except Exception as e:
             st.write(e)
