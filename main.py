@@ -143,7 +143,7 @@ if __name__ == '__main__':
                 st.write("Uploaded Data:")
                 st.write(data[['content']])
 
-            #st.write(get_text_embeddings(data['content']))
+            st.write(get_text_embeddings(data['content']))
 
         except Exception as e:
             st.write(e)
