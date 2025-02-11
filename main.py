@@ -160,7 +160,8 @@ if __name__ == '__main__':
             gdown.download(url, output_file, quiet=False)
 		
 	    # Load Keras model
-            model = keras.models.load_model(output_file)
+            model = keras.models.load_model(output_file, custom_objects={"KerasLayer": hub.KerasLayer})
+	    st.write("Model bert_model.h5 loaded successfully!")
 
 	    # Test the model (example for a text classification model)
             predictions  = model.predict(preprocessed_data)
