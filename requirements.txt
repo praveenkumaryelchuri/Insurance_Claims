@@ -1,0 +1,19 @@
+# pandas
+# numpy
+# nltk
+# gensim
+# scikit-learn
+# openpyxl
+# matplotlib
+# transformers
+# streamlit
+
+streamlit
+pandas
+Pillow
+nltk
+gensim
+scikit-learn
+tensorflow-hub
+tensorflow-text
+numpy==1.23.5
