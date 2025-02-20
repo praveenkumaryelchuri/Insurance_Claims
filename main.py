@@ -95,7 +95,7 @@ if __name__ == '__main__':
             #read xls or xlsx
             if uploaded_file is not None:
                 data=pd.read_excel(uploaded_file,engine="openpyxl")
-                st.write("Uploaded Data:")
+                #st.write("Uploaded Data:")
                 st.write(data[['content']])
 	        
             #Apply the function on the dataset to perform the preprocessing data.
