@@ -78,7 +78,7 @@ if __name__ == '__main__':
     # Path to your image (either local or from a URL)
 
     st.header("Insurance Claims Prediction :books:")
-	with st.sidebar:
+    with st.sidebar:
         st.markdown('''
         ## About
         This Insurance Claims Prediction app is built using:
