@@ -96,7 +96,7 @@ if __name__ == '__main__':
             if uploaded_file is not None:
                 data=pd.read_excel(uploaded_file,engine="openpyxl")
                 #st.write("Uploaded Data:")
-                st.write(data[['content']])
+                #st.write(data[['content']])
 	        
             #Apply the function on the dataset to perform the preprocessing data.
             data['updated_content']=data['content'].apply(return_only_words)
