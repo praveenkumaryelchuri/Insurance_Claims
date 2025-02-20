@@ -82,9 +82,6 @@ if __name__ == '__main__':
         st.markdown('''
         ## About
         This Insurance Claims Prediction app is built using:
-        - Random Forest Classifier
-        - NLTK
-        - GENSIM
         - Streamlit Application
         ''')
 
