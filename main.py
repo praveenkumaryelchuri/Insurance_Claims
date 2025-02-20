@@ -85,7 +85,7 @@ if __name__ == '__main__':
         - Random Forest Classifier
         - NLTK
         - GENSIM
-	- TENSORFLOW
+	    - TENSORFLOW
         - Streamlit Application
         ''')
 
@@ -220,4 +220,3 @@ if __name__ == '__main__':
             st.write(e)
 
             
-		
