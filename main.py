@@ -78,6 +78,17 @@ if __name__ == '__main__':
     # Path to your image (either local or from a URL)
 
     st.header("Insurance Claims Prediction :books:")
+	with st.sidebar:
+        st.markdown('''
+        ## About
+        This Insurance Claims Prediction app is built using:
+        - Random Forest Classifier
+        - NLTK
+        - GENSIM
+	- TENSORFLOW
+        - Streamlit Application
+        ''')
+
 
     uploaded_file = st.sidebar.file_uploader("Upload your Excel/CSV here:", accept_multiple_files=False)
  
