@@ -99,10 +99,10 @@ if __name__ == '__main__':
                 st.write(data[['content']])
 	        
             #Apply the function on the dataset to perform the preprocessing data.
-	    try:	
-		data['updated_content']=data['content'].apply(return_only_words)
-	    except EXCEPTION as e:
-		pass
+	        try:
+                data['updated_content']=data['content'].apply(return_only_words)
+	        except Exception as e:
+                st.write("No Data Available to Predict.")
 	
 	        
             # Function to count words in a dataframe column
