@@ -89,7 +89,7 @@ if __name__ == '__main__':
     uploaded_file = st.sidebar.file_uploader("Upload your Excel/CSV here:", accept_multiple_files=False)
  
 
-    if st.button("Predict"):
+    if st.sidebar.button("Predict"):
         try:
 
             #read xls or xlsx
