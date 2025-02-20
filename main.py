@@ -99,7 +99,11 @@ if __name__ == '__main__':
                 st.write(data[['content']])
 	        
             #Apply the function on the dataset to perform the preprocessing data.
-            data['updated_content']=data['content'].apply(return_only_words)
+	    try:	
+		data['updated_content']=data['content'].apply(return_only_words)
+	    except EXCEPTION as e:
+		pass
+	
 	        
             # Function to count words in a dataframe column
             max_words_size=max(data['updated_content'].apply(lambda x: len(x.split())))
