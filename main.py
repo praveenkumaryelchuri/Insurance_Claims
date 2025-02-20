@@ -111,7 +111,7 @@ if __name__ == '__main__':
             sentences = [sentence.split() for sentence in data['updated_content']]
             #sentences
 	        
-            embedding_size=max_words_size+20
+            embedding_size=53 #max_words_size+20
             word2vec_model=Word2Vec(sentences,vector_size=embedding_size, window=3, min_count=1, workers=2)
 	        
             # Create feature matrix X by applying sentence_to_vector to each sentence
