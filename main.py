@@ -73,8 +73,8 @@ if __name__ == '__main__':
             #read xls or xlsx
             if uploaded_file is not None:
                 data=pd.read_excel(uploaded_file)
-                st.write("Uploaded Data:")
-                st.write(data[['content']])
+                st.write("Text & Predicted Result:")
+                #st.write(data[['content']])
 
             word2vec = gensim.models.Word2Vec.load("word2vec_model.model")
             
@@ -98,7 +98,9 @@ if __name__ == '__main__':
             for i, text in enumerate(data['content']):
                 #print(f"Text: '{text}' --> Predicted Label: {predicted_labels[i]}")
 
-                st.write(f"Text: '{text}' --> Predicted Label: {predicted_labels[i]}")
+                #st.write(f"Text: '{text}' --> Predicted Label: {predicted_labels[i]}")
+		st.markdown(f"**Text:** '{user_text}' → **Predicted Label:** <span style='color: darkgreen; font-weight: bold;'>{predicted_label}</span>", unsafe_allow_html=True)
+
 
 
 
