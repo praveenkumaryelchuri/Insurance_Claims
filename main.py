@@ -98,7 +98,8 @@ if __name__ == '__main__':
             for i, text in enumerate(data['content']):
                 #print(f"Text: '{text}' --> Predicted Label: {predicted_labels[i]}")
 
-                st.markdown(f"**Text:** '{text}' → **Predicted Label:** <span style='color: darkgreen; font-weight: bold;'>{predicted_labels}</span>", unsafe_allow_html=True)
+                st.markdown(f"**Text:** '{text}' → **Predicted Label:** <span style='color: darkgreen; font-weight: bold;'>{predicted_labels[i]}</span>", unsafe_allow_html=True)
+
 		
 
 
