@@ -14,6 +14,9 @@ from sklearn.model_selection import train_test_split
 import pickle
 import gensim
 
+nltk.download('stopwords')
+nltk.download('punkt_tab')
+
 
 stop_words=set(stopwords.words('english'))
 
