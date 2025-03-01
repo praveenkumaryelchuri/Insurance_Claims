@@ -77,7 +77,9 @@ if __name__ == '__main__':
                 st.write(data[['content']])
 
             word2vec = gensim.models.Word2Vec.load("word2vec_model.model")
-            label_encoder = LabelEncoder()
+            
+            with open("label_encoder.pkl", "rb") as le_file:
+                label_encoder = pickle.load(le_file)
 	        
             #Apply the function on the dataset to perform the preprocessing data.
             unseen_data_processed = [preprocess_text(text) for text in data['content']]
