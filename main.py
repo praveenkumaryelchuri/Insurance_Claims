@@ -95,7 +95,7 @@ if __name__ == '__main__':
             predicted_labels = label_encoder.inverse_transform(predictions)
             
             # Display predicted labels for the unseen data
-            for i, text in enumerate(unseen_data['content']):
+            for i, text in enumerate(data['content']):
                 #print(f"Text: '{text}' --> Predicted Label: {predicted_labels[i]}")
 
                 st.write(f"Text: '{text}' --> Predicted Label: {predicted_labels[i]}")
